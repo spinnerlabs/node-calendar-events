@@ -265,7 +265,7 @@ function checkEvents() {
         message: `${event.location || ''} ${event.summary}`,
       });
 
-      player.play(sound, { timeout: 1800 }, function (err) {
+      player.play(sound, { timeout: 2500 }, function (err) {
         console.error(err);
       });
 
