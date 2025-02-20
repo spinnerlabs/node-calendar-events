@@ -1,0 +1,96 @@
+      /*
+      {
+  kind: 'calendar#event',
+  etag: '"3412203709362000"',
+  id: 'gpi4cf7aeg11i34odttq797t1o_20250304',
+  status: 'confirmed',
+  htmlLink: 'https://www.google.com/calendar/event?eid=Z3BpNGNmN2FlZzExaTM0b2R0dHE3OTd0MW9fMjAyNTAzMDQgcm9iZXJ0QHNwaW5uZXJsYWJzLm5v',
+  created: '2022-11-28T12:50:11.000Z',
+  updated: '2024-01-24T13:10:54.681Z',
+  summary: 'Hjemme',
+  creator: { email: 'robert@spinnerlabs.no', self: true },
+  organizer: { email: 'robert@spinnerlabs.no', self: true },
+  start: { date: '2025-03-04' },
+  end: { date: '2025-03-05' },
+  recurringEventId: 'gpi4cf7aeg11i34odttq797t1o',
+  originalStartTime: { date: '2025-03-04' },
+  transparency: 'transparent',
+  visibility: 'public',
+  iCalUID: 'gpi4cf7aeg11i34odttq797t1o@google.com',
+  sequence: 0,
+  reminders: { useDefault: false },
+  workingLocationProperties: { type: 'homeOffice', homeOffice: {} },
+  eventType: 'workingLocation'
+}
+
+// Another one, actually meeting.
+{
+  kind: 'calendar#event',
+  etag: '"3478369126284000"',
+  id: '_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g61132dhg6kojeg9l6t148ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g64rjacq56go3ge216h13ig9k6p132dpi84sjgga56533ce9j8go0_20250303T083000Z',
+  status: 'confirmed',
+  htmlLink: 'https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2MTEzMmRoZzZrb2plZzlsNnQxNDhnaGc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnNjRyamFjcTU2Z28zZ2UyMTZoMTNpZzlrNnAxMzJkcGk4NHNqZ2dhNTY1MzNjZTlqOGdvMF8yMDI1MDMwM1QwODMwMDBaIHJvYmVydEBzcGlubmVybGFicy5ubw',
+  created: '2025-02-10T10:18:20.000Z',
+  updated: '2025-02-10T10:49:23.142Z',
+  summary: 'PF - Spinner Labs',
+  description: '\n' +
+    '________________________________________________________________________________\n' +
+    'Microsoft Teams Trenger du hjelp?<https://aka.ms/JoinTeamsMeeting?omkt=nb-NO>\n' +
+    'Bli med i møtet nå<https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZjM4N2ZhZmMtMWZiZi00NzQ0LWI4YzEtMTY2ODA0NTA2OGM3%40thread.v2/0?context=%7b%22Tid%22%3a%227eca4465-b4ab-49af-9230-bb95171ed47b%22%2c%22Oid%22%3a%223220e9af-596e-440f-bb94-f69a14229ab9%22%7d>\n' +
+    'Møte-ID: 327 723 251 772\n' +
+    'Passord: TG6hq3yy\n' +
+    '________________________________\n' +
+    'For arrangører: Møtealternativer<https://teams.microsoft.com/meetingOptions/?organizerId=3220e9af-596e-440f-bb94-f69a14229ab9&tenantId=7eca4465-b4ab-49af-9230-bb95171ed47b&threadId=19_meeting_ZjM4N2ZhZmMtMWZiZi00NzQ0LWI4YzEtMTY2ODA0NTA2OGM3@thread.v2&messageId=0&language=nb-NO>\n' +
+    '________________________________________________________________________________\n',
+  location: 'Microsoft Teams-møte',
+  creator: { email: 'robert@spinnerlabs.no', self: true },
+  organizer: { email: 'rune@prospectfinder.ai', displayName: 'Rune Holsvik' },
+  start: {
+    dateTime: '2025-03-03T09:30:00+01:00',
+    timeZone: 'Europe/Amsterdam'
+  },
+  end: {
+    dateTime: '2025-03-03T10:00:00+01:00',
+    timeZone: 'Europe/Amsterdam'
+  },
+  recurringEventId: '_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g61132dhg6kojeg9l6t148ghg64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g64rjacq56go3ge216h13ig9k6p132dpi84sjgga56533ce9j8go0',
+  originalStartTime: {
+    dateTime: '2025-03-03T09:30:00+01:00',
+    timeZone: 'Europe/Amsterdam'
+  },
+  iCalUID: '040000008200E00074C5B7101A82E008000000000B160517A57BDB010000000000000000100000001753E4088A4B9A46B172A98AE1F693D0',
+  sequence: 1,
+  attendees: [
+    {
+      email: 'svenn@spinnerlabs.no',
+      displayName: 'svenn',
+      responseStatus: 'needsAction'
+    },
+    {
+      email: 'robert@spinnerlabs.no',
+      self: true,
+      responseStatus: 'accepted'
+    },
+    {
+      email: 'hl@prospectfinder.ai',
+      displayName: 'Håvard Lillevik',
+      responseStatus: 'needsAction'
+    },
+    {
+      email: 'rune@prospectfinder.ai',
+      displayName: 'Rune Holsvik',
+      organizer: true,
+      responseStatus: 'accepted'
+    },
+    {
+      email: 'tamhov@prospectfinder.ai',
+      displayName: 'Tamarah Hovland',
+      responseStatus: 'needsAction'
+    }
+  ],
+  guestsCanInviteOthers: false,
+  privateCopy: true,
+  reminders: { useDefault: true },
+  eventType: 'default'
+}
+
