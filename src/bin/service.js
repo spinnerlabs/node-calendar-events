@@ -235,18 +235,22 @@ function checkEvents() {
 
       let title = 'Event';
       let sound = 'data/234563__foolboymedia__notification-up-ii.wav';
+      let cacheId = 1;
 
       if (minutesToStart <= 0) {
         title = 'Event started';
         sound = 'data/457518__graham_makes__chord-alert-notification.wav';
+        cacheId = 1;
       } else if (minutesToStart <= 1) {
         title = 'Event starting now';
+        cacheId = 2;
       } else if (minutesToStart < 5) {
         title = `Event starting in ${minutesToStart} minutes`;
         sound = 'data/716448__scottyd0es__tone12_msg_notification_2.wav';
+        cacheId = 3;
       }
 
-      const cacheKey = `${event.etag}-${sound}-${title}`;
+      const cacheKey = `${event.etag}-${sound}-${cacheId}`;
 
       if (notifiedKeys.has(cacheKey)) {
         continue;
