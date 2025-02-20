@@ -238,7 +238,7 @@ function checkEvents() {
 
       if (minutesToStart <= 0) {
         title = 'Event started';
-        sound = 'data/352659__foolboymedia__alert-chime-1.mp3';
+        sound = 'data/457518__graham_makes__chord-alert-notification.wav';
       } else if (minutesToStart <= 1) {
         title = 'Event starting now';
       } else if (minutesToStart < 5) {
@@ -246,7 +246,7 @@ function checkEvents() {
         sound = 'data/716448__scottyd0es__tone12_msg_notification_2.wav';
       }
 
-      const cacheKey = `${event.etag}-${title}`;
+      const cacheKey = `${event.etag}-${sound}-${title}`;
 
       if (notifiedKeys.has(cacheKey)) {
         continue;
@@ -262,11 +262,10 @@ function checkEvents() {
       });
 
       player.play(sound, { timeout: 1400 }, function (err) {
-        if (err) throw err
+        console.error(err);
       });
 
       notifiedKeys.set(cacheKey, true);
-      ignoredEvents.set(event.id, true);
     }
   }
 }
