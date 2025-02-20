@@ -234,13 +234,16 @@ function checkEvents() {
       console.log('Event starting soon:', event.summary, minutesToStart);
 
       let title = 'Event';
+      let sound = 'data/234563__foolboymedia__notification-up-ii.wav';
 
-      if (minutesToStart <= -1) {
+      if (minutesToStart <= 0) {
         title = 'Event started';
+        sound = 'data/352659__foolboymedia__alert-chime-1.mp3';
       } else if (minutesToStart <= 1) {
         title = 'Event starting now';
       } else if (minutesToStart < 5) {
         title = `Event starting in ${minutesToStart} minutes`;
+        sound = 'data/716448__scottyd0es__tone12_msg_notification_2.wav';
       }
 
       const cacheKey = `${event.etag}-${title}`;
@@ -258,7 +261,7 @@ function checkEvents() {
         message: `${event.location || ''} ${event.summary}`,
       });
 
-      player.play('data/234563__foolboymedia__notification-up-ii.wav', { timeout: 1400 }, function (err) {
+      player.play(sound, { timeout: 1400 }, function (err) {
         if (err) throw err
       });
 
