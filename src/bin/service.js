@@ -5,11 +5,20 @@ import express from 'express';
 import Player from "play-sound";
 import notifier from "node-notifier";
 import { SysTray } from 'node-systray-v2';
+// Read env with dotenv.
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const server = express();
 const clientId = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 const calendarId = process.env.GOOGLE_CALENDAR_ID || 'primary'; // 'robert@spinnerlabs.no';
+
+if (!clientId || !clientSecret) {
+  console.error('Missing Google client id or secret.');
+  process.exit(1);
+}
 
 const player = new Player();
 
@@ -297,6 +306,8 @@ function refreshEvents() {
         title: 'Error while fetching events',
         message: err.message,
       });
+
+      // TODO: Should update the tray.
 
       return;
     }
