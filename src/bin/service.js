@@ -312,7 +312,7 @@ function refreshEvents() {
       return;
     }
 
-    let hasNewEvents = false;
+    const newEvents = [];
 
     // Remove events that are over.
     const now = new Date();
@@ -329,16 +329,16 @@ function refreshEvents() {
       // If it doesn't already exist add it to events.
       if (!events.find((e) => e.id === event.id)) {
         events.push(event);
-        hasNewEvents = true;
+        newEvents.push(event);
       }
     });
 
-    if (hasNewEvents) {
-      console.log('Events:', events.map((e) => e.summary).join(', '));
+    if (newEvents.length > 0) {
+      console.log('Events:', newEvents.map((e) => e.summary).join(', '));
       // Notify about it.
       notifier.notify({
         title: 'New events fetched',
-        message: events.map((e) => e.summary).join(', '),
+        message: newEvents.map((e) => e.summary).join(', '),
       });
 
       drawSysTray();
