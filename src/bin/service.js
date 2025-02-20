@@ -198,7 +198,7 @@ if (auth.access_token === null) {
 
 setInterval(() => {
   refreshEvents();
-}, 1000 * 60 * 15);
+}, 1000 * 60 * 5);
 
 // Every minute, check for events that start the next 5 minutes.
 setInterval(() => {
@@ -280,7 +280,8 @@ function authorize() {
 }
 
 function refreshEvents() {
-// Hent de neste 10 kommende hendelsene fra primærkalenderen
+  console.info('Refreshing events');
+
   calendar.events.list({
     calendarId, // eller en spesifikk kalender-ID
     timeMin: (new Date()).toISOString(),
