@@ -29,7 +29,14 @@ function getTrayItems() {
   // Update the tray.
   const trayItems = [];
 
-  events.forEach((event) => {
+  const sortedEvents = events.sort((a, b) => {
+    const aDate = new Date(a.start.dateTime || a.start.date);
+    const bDate = new Date(b.start.dateTime || b.start.date);
+
+    return aDate.getTime() - bDate.getTime();
+  });
+
+  sortedEvents.forEach((event) => {
     if (!event.start.dateTime) {
       return; // Skip all-day events.
     }
@@ -196,13 +203,7 @@ if (auth.access_token === null) {
   authorize();
 } else {
   oauth2Client.setCredentials(auth);
-
-  if (events.length === 0) {
-    refreshEvents();
-  } else {
-    // Make sure we draw the systray.
-    drawSysTray();
-  }
+  refreshEvents();
 }
 
 setInterval(() => {
@@ -214,6 +215,7 @@ setInterval(() => {
   checkEvents();
 }, 1000 * 30);
 
+drawSysTray();
 checkEvents();
 
 function checkEvents() {
@@ -313,14 +315,17 @@ function refreshEvents() {
     }
 
     const newEvents = [];
+    let hasChanges = false;
 
     // Remove events that are over.
     const now = new Date();
     events.forEach((event, index) => {
-      const start = new Date(event.start.dateTime || event.start.date);
+      const end = new Date(event.end.dateTime || event.end.date);
 
-      if (start < now) {
+      if (end < now) {
+        console.log('Removing event:', event.summary);
         events.splice(index, 1);
+        hasChanges = true;
       }
     });
 
@@ -330,6 +335,7 @@ function refreshEvents() {
       if (!events.find((e) => e.id === event.id)) {
         events.push(event);
         newEvents.push(event);
+        hasChanges = true;
       }
     });
 
@@ -340,7 +346,9 @@ function refreshEvents() {
         title: 'New events fetched',
         message: newEvents.map((e) => e.summary).join(', '),
       });
+    }
 
+    if (hasChanges) {
       drawSysTray();
       checkEvents();
     }
