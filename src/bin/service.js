@@ -139,6 +139,8 @@ const oauth2Client = new google.auth.OAuth2(
   clientSecret,
   'http://localhost:9080/oauth2callback');
 
+const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
+
 server.get('/oauth2callback', (req, res) => {
   const data = req.query;
 
@@ -278,8 +280,6 @@ function authorize() {
 }
 
 function refreshEvents() {
-  const calendar = google.calendar({ version: 'v3', auth: oauth2Client });
-
 // Hent de neste 10 kommende hendelsene fra primærkalenderen
   calendar.events.list({
     calendarId, // eller en spesifikk kalender-ID
