@@ -331,23 +331,10 @@ function refreshEvents() {
     const newEvents = [];
     let hasChanges = false;
 
-    // Remove events that are over.
-    const now = new Date();
-    events.forEach((event, index) => {
-      const end = new Date(event.end.dateTime || event.end.date);
-
-      if (end < now) {
-        console.log('Removing event:', event.summary);
-        events.splice(index, 1);
-        hasChanges = true;
-      }
-    });
-
-    // Add potential new ones.
+    // Mark new ones.
     res.data.items.forEach((event) => {
       // If it doesn't already exist add it to events.
       if (!events.find((e) => e.id === event.id)) {
-        events.push(event);
         newEvents.push(event);
         hasChanges = true;
       }
@@ -360,13 +347,24 @@ function refreshEvents() {
         title: 'New events fetched',
         message: newEvents.map((e) => e.summary).join(', '),
       });
+
+      hasChanges = true;
     }
+
+    if (newEvents.length !== events.length) {
+      hasChanges = true;
+    }
+
+    // Remove all events
+    events.splice(0, events.length);
+
+    // Add back.
+    events.push(...res.data.items);
 
     if (hasChanges) {
       drawSysTray();
       checkEvents();
+      saveEvents();
     }
-
-    saveEvents();
   });
 }
