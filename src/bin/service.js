@@ -25,6 +25,11 @@ const player = new Player();
 const trayIcon = readFileSync('data/299092_calendar_icon.png').toString('base64');
 let systray = null;
 
+function formatDate(ymd) {
+  const parts = ymd.split('-');
+  return `${parts[2]}.${parts[1]}.${parts[0]}`;
+}
+
 function getTrayItems() {
   // Update the tray.
   const trayItems = [];
@@ -47,10 +52,13 @@ function getTrayItems() {
     const endDate = new Date(event.end.dateTime);
     const endYmd = endDate.toISOString().split('T')[0];
     const endTime = endDate.toTimeString().split(' ')[0].slice(0, 5);
-    const endPart = endYmd === dateYmd ? '' : ` ${endYmd}`;
+    const dateDmY = formatDate(dateYmd);
+    const endDmY = formatDate(endYmd);
+    const endPart = endYmd === dateYmd ? '' : ` ${endDmY}`;
+
 
     trayItems.push({
-      title: `${dateYmd} ${time} -${endPart} ${endTime}: ${event.summary}`,
+      title: `${dateDmY} ${time} -${endPart} ${endTime}: ${event.summary}`,
       tooltip: `${event.etag}`,
       // checked is implement by plain text in linux
       checked: false,
