@@ -3,7 +3,7 @@
 ## What does this do?
 
 It reads your primary calendar from google calendar and notifies you about it with sounds.
-It gives you a warning 5 minutes before, 4 minutes and 1-30 seconds before the event/meeting.
+It gives you a sound warning 5 minutes before, 4 minutes and 1-30 seconds before the event/meeting.
 
 ![img.png](img.png)
 
