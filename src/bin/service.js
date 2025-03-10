@@ -355,11 +355,30 @@ function refreshEvents() {
       hasChanges = true;
     }
 
+    const previousEvents = JSON.parse(JSON.stringify(events));
+
     // Remove all events
     events.splice(0, events.length);
 
     // Add back.
     events.push(...res.data.items);
+
+    // Check if there are any events that are removed.
+    for (const event of previousEvents) {
+      const found = events.find((e) => e.id === event.id);
+      const eventIsInTheFuture = new Date(event.start.dateTime) > new Date();
+
+      if (!found && eventIsInTheFuture && !ignoredEvents.has(event.id)) {
+        console.info('Event removed:', event.summary);
+        hasChanges = true;
+
+        // Notify about it.
+        notifier.notify({
+          title: 'Event removed',
+          message: event.summary,
+        });
+      }
+    }
 
     if (hasChanges) {
       drawSysTray();
